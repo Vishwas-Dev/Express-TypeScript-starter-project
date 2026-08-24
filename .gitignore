@@ -1,4 +1,4 @@
 node_modules/
 dist/
-.env/
-notes.docx/
+.env
+notes.docx
