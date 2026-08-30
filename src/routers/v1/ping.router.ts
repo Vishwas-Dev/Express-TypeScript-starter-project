@@ -3,7 +3,9 @@ import { pingHandler } from '../../controllers/ping.controller.js';
 
 const pingRouter = express.Router();
 
-pingRouter.get('/', pingHandler);
+
+pingRouter.get('/:id/cmt', pingHandler);
+pingRouter.get('/:id/mine', pingHandler);
 
 pingRouter.get('/health', (req, res) => {
     res.status(200).send('OK');
