@@ -5,7 +5,10 @@ export const pingHandler = (req: Request, res: Response) => {
     console.log("request params", req.params);
 
 
-    res.send("pong");
+    res.status(200).json({
+        message: "pong",
+        success: true
+    })
     // res.send("pong");
 }
 
