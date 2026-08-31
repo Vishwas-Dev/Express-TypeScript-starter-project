@@ -1,17 +1,24 @@
 import express from 'express';
 import { pingHandler } from '../../controllers/ping.controller.js';
-import { userSchema } from '../../schema/user.schema.js';
+
 import { validateRequestBody } from '../../validator/index.js';
+import { pingSchema } from '../../validator/ping.validator.js';
+// import { userSchema } from '../../validator/user.validator.js';
 
 
 const pingRouter = express.Router();
 
 // pingRouter.get('/',validateRequestBody(userSchema) , pingHandler);
 pingRouter.get(
-    "/user/:id/",
-    validateRequestBody(userSchema),
+    "/",
+    validateRequestBody(pingSchema),
     pingHandler
   );
+// pingRouter.get(
+//     "/",
+//     validateRequestBody(userSchema),
+//     pingHandler
+//   );
 
 
 pingRouter.get('/health', (req, res) => {
