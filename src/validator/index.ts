@@ -22,3 +22,24 @@ export const validateRequestBody = (schema : AnyZodObject) => {
 
 }
 
+export const validateQueryParam = (schema : AnyZodObject) => {
+    return async (req:  Request, res: Response, next: NextFunction) =>{
+        try {
+
+            await schema.parseAsync(req.query);
+            console.log("Query Param is valid");
+            next();
+
+        } catch (error) {
+            // 
+            console.log("invalid Query Param");
+        res.status(400).json({
+            message: "invalid Query Param",
+            success : false,
+            error : error
+        });
+        }
+    }
+
+}
+

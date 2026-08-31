@@ -8,7 +8,7 @@ const pingRouter = express.Router();
 
 // pingRouter.get('/',validateRequestBody(userSchema) , pingHandler);
 pingRouter.get(
-    "/",
+    "/user/:id/",
     validateRequestBody(userSchema),
     pingHandler
   );
