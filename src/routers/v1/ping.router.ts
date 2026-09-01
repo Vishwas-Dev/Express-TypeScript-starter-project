@@ -8,12 +8,12 @@ import { pingSchema } from '../../validator/ping.validator.js';
 
 const pingRouter = express.Router();
 
-// pingRouter.get('/',validateRequestBody(userSchema) , pingHandler);
 pingRouter.get(
     "/",
     validateRequestBody(pingSchema),
     pingHandler
   );
+  
 // pingRouter.get(
 //     "/",
 //     validateRequestBody(userSchema),
