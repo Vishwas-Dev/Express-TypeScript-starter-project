@@ -6,7 +6,7 @@ export const validateRequestBody = (schema : AnyZodObject) => {
     return async (req:  Request, res: Response, next: NextFunction) =>{
         try {
 
-            logger.info("validating request body")
+            logger.info("validating request body" )
             await schema.parseAsync(req.body);
             logger.info("request body is valid");
             next();
