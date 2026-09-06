@@ -2,7 +2,7 @@
 import dotenv from "dotenv";
 
 type ServerConfig = {
-    PORT : Number;
+    PORT : number;
 }
 
  function loadEnv(){
