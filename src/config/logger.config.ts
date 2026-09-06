@@ -1,26 +1,37 @@
+
 import winston from "winston";
+import DailyRotateFile from "winston-daily-rotate-file";
 import { getCorrelationId } from "../utilis/helpers/request.helpers.js";
 
 
 export const logger = winston.createLogger({
-    format:  winston.format.combine(
-        winston.format.timestamp({ format: "MM-DD-YYYY hh-mm-ss"}),
+    format: winston.format.combine(
+        winston.format.timestamp({ format: "MM-DD-YYYY hh-mm-ss" }),
         winston.format.json(),
-        winston.format.printf( ({ level , message, timestamp, ...data })  => {
-            const output =  { level, 
+        winston.format.printf(({ level, message, timestamp, ...data }) => {
+            const output = {
+                level,
                 message,
-                timestamp, 
+                timestamp,
                 correlationId: getCorrelationId(),
-                data };
-               
-           return JSON.stringify(output);
+                data
+            };
+
+            return JSON.stringify(output);
         }),
-       
+
     ),
 
-    transports : [
+    transports: [
         new winston.transports.Console(),
+        new DailyRotateFile({
+            filename: 'logs/%DATE%-app.log',
+            datePattern: 'YYYY-MM-DD-HH',
+            maxSize: '20m',
+            maxFiles: '14d'
+        })
+
     ],
-   
-    
+
+
 })
