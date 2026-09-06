@@ -1,5 +1,6 @@
 import express from 'express';
 import { serverConfig } from './config/index.js';
+import { logger } from './config/logger.config.js';
 import { genericErrorHandler } from './middlewares/error.middleware.js';
 import v1Router from './routers/v1/index.router.js';
 import v2Router from './routers/v2/index.router.js';
@@ -17,6 +18,6 @@ app.use(genericErrorHandler);
 
 
 app.listen(serverConfig.PORT, () => {
-    console.log(`Server is running on http://localhost:${serverConfig.PORT}`);
-    console.log(`Press Ctrl+C to stop the server.`);
+    logger.info(`Server is running on http://localhost:${serverConfig.PORT}`);
+    logger.info(`Press Ctrl+C to stop the server.`);
 });
