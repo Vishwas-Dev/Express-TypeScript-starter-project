@@ -18,6 +18,6 @@ app.use(genericErrorHandler);
 
 
 app.listen(serverConfig.PORT, () => {
-    logger.info(`Server is running on http://localhost:${serverConfig.PORT}`);
-    logger.info(`Press Ctrl+C to stop the server.`);
+    console.log(`Server is running on http://localhost:${serverConfig.PORT}`);
+    logger.info(`Press Ctrl+C to stop the server.`, {data : "somting"});
 });

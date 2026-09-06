@@ -6,10 +6,15 @@ export const logger = winston.createLogger({
         winston.format.timestamp({ format: "MM-DD-YYYY hh-mm-ss"}),
         winston.format.json(),
         winston.format.printf( ({ level , message, timestamp, ...data })  => {
-            const output =  { level, message, data };
+            const output =  { level, message, timestamp, data };
            return JSON.stringify(output);
-        }) 
-        
-    ) 
+        }),
+       
+    ),
+
+    transports : [
+        new winston.transports.Console(),
+    ],
+   
     
 })
